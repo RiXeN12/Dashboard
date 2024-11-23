@@ -1,9 +1,4 @@
-﻿using Dashboard.DAL.Models.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Dashboard.DAL.Models.Identity.NewsCategory;
 
 namespace Dashboard.DAL.Repositories.CategoryRepository
 {
@@ -13,6 +8,7 @@ namespace Dashboard.DAL.Repositories.CategoryRepository
         Task DeleteAsync(int id);
         Task<IEnumerable<Category>> GetAllAsync();
         Task<Category> GetByIdAsync(int id);
+        Task<Category> GetByIdWithNewsAsync(int id);
         Task<Category> UpdateAsync(Category category);
     }
 }

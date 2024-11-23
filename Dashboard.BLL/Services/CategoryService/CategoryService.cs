@@ -1,4 +1,4 @@
-﻿using Dashboard.DAL.Models.Identity;
+﻿using Dashboard.DAL.Models.Identity.NewsCategory;
 using Dashboard.DAL.Repositories.CategoryRepository;
 using System;
 using System.Collections.Generic;
@@ -25,6 +25,11 @@ namespace Dashboard.BLL.Services.CategoryService
         public async Task<Category> GetByIdAsync(int id)
         {
             return await _categoryRepository.GetByIdAsync(id);
+        }
+
+        public async Task<Category> GetByIdWithNewsAsync(int id)
+        {
+            return await _categoryRepository.GetByIdWithNewsAsync(id);
         }
 
         public async Task<Category> CreateAsync(Category category)

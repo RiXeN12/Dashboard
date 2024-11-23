@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 
 
-namespace Dashboard.DAL.Models.Identity
+namespace Dashboard.DAL.Models.Identity.NewsCategory
 {
     [Table("Categories")]
     public class Category
@@ -19,5 +19,7 @@ namespace Dashboard.DAL.Models.Identity
 
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+
+        public ICollection<News> News { get; set; }
     }
 }

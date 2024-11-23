@@ -1,4 +1,4 @@
-﻿using Dashboard.DAL.Models.Identity;
+﻿using Dashboard.DAL.Models.Identity.NewsCategory;
 
 namespace Dashboard.BLL.Services.CategoryService
 {
@@ -8,6 +8,7 @@ namespace Dashboard.BLL.Services.CategoryService
         Task DeleteAsync(int id);
         Task<IEnumerable<Category>> GetAllAsync();
         Task<Category> GetByIdAsync(int id);
+        Task<Category> GetByIdWithNewsAsync(int id);
         Task<Category> UpdateAsync(Category category);
     }
 }

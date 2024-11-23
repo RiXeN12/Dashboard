@@ -4,6 +4,7 @@ using Dashboard.BLL.Services.CategoryService;
 using Dashboard.BLL.Services.ImageService;
 using Dashboard.BLL.Services.MailService;
 using Dashboard.BLL.Services.MailService.JwtService;
+using Dashboard.BLL.Services.NewsService;
 using Dashboard.BLL.Services.RoleService;
 using Dashboard.BLL.Services.UserService;
 using Dashboard.DAL;
@@ -11,6 +12,7 @@ using Dashboard.DAL.Data;
 using Dashboard.DAL.Data.Initializer;
 using Dashboard.DAL.Models.Identity;
 using Dashboard.DAL.Repositories.CategoryRepository;
+using Dashboard.DAL.Repositories.NewsRepository;
 using Dashboard.DAL.Repositories.RoleRepository;
 using Dashboard.DAL.Repositories.UserRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -85,6 +87,8 @@ builder.Services.AddScoped<IImageService, ImageService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<INewsRepository, NewsRepository>();
+builder.Services.AddScoped<INewsService, NewsService>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(

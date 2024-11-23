@@ -1,5 +1,6 @@
 ﻿using Dashboard.DAL.Models;
 using Dashboard.DAL.Models.Identity;
+using Dashboard.DAL.Models.Identity.NewsCategory;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +13,7 @@ namespace Dashboard.DAL.Data
 
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<News> News { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -58,6 +60,12 @@ namespace Dashboard.DAL.Data
                     .HasForeignKey(rc => rc.RoleId)
                     .IsRequired();
             });
+
+            builder.Entity<Category>()
+                .HasMany(c => c.News)
+                .WithOne(n => n.Category)
+                .HasForeignKey(n => n.CategoryId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

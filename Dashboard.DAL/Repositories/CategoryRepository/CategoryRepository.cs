@@ -1,6 +1,6 @@
 ﻿using Dashboard.DAL.Data;
 using Microsoft.EntityFrameworkCore;
-using Dashboard.DAL.Models.Identity;
+using Dashboard.DAL.Models.Identity.NewsCategory;
 
 namespace Dashboard.DAL.Repositories.CategoryRepository
 {
@@ -42,6 +42,13 @@ namespace Dashboard.DAL.Repositories.CategoryRepository
             var category = await GetByIdAsync(id);
             _dbContext.Categories.Remove(category);
             await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<Category> GetByIdWithNewsAsync(int id)
+        {
+            return await _dbContext.Categories
+                .Include(c => c.News)
+                .FirstOrDefaultAsync(c => c.Id == id);
         }
     }
 }
